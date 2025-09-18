@@ -1,4 +1,4 @@
-# 🔮 SparseTSF: PyTorch 复现与 MindSpore 迁移
+# SparseTSF: PyTorch 复现与 MindSpore 迁移
 
 本项目基于 **时间序列预测模型 SparseTSF**，我们完成了在 **PyTorch** 框架上的复现，并将代码迁移到 **MindSpore** 框架，确保能在相同数据集上运行与复现结果。
 
@@ -7,12 +7,19 @@
 ## 🚀 项目结构
 ```
 SparseTSF/
-├── pytorch_version/ # PyTorch 实现与实验代码
-├── mindspore_version/ # MindSpore 迁移版本
-├── data/ # 数据集存放目录
-├── results/ # 实验结果与日志
-├── requirements.txt
-└── README.md
+├─ API扫描结果/ 
+│
+├─ SparseTSF-main (M)/          # MindSpore 版本源码
+│  └─ SparseTSF-main/        
+│
+├─ SparseTSF-main (P)/          # PyTorch 版本源码
+│  └─ SparseTSF-main/        
+│
+├─ dataset/                     # 数据集
+│  └─ dataset/          
+│
+├─ README.md               
+└─ SparseTSF.pdf                
 ```
 ---
 
