@@ -25,16 +25,13 @@ SparseTSF/
 
 ## ⚙️ 本地运行方式
 
-### 1. 安装依赖
-```bash
-pip install -r requirements.txt
-```
-### 2. 运行 PyTorch 版本
+
+### 1. 运行 PyTorch 版本
 ```bash
 cd pytorch_version
 python main.py --dataset ETTh1
 ```
-### 3. 运行 MindSpore 版本
+### 2. 运行 MindSpore 版本
 ```bash
 cd mindspore_version
 python main.py --dataset ETTh1
