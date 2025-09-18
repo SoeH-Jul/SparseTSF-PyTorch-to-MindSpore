@@ -1,0 +1,7 @@
+可以转换为MindSpore API的PyTorch/TensorFlow API,
+"=HYPERLINK(""https://pytorch.org/docs/1.8.1/generated/torch.ones.html"",""torch.ones"")",PyTorch 1.8.1 APIs,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/api_python/ops/mindspore.ops.ones.html"",""mindspore.ops.ones"")","=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/note/api_mapping/pytorch_diff/ones.html"",""差异对比"")"
+"=HYPERLINK(""https://pytorch.org/docs/1.8.1/generated/torch.nn.Linear.html"",""torch.nn.Linear"")",PyTorch 1.8.1 APIs,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/api_python/nn/mindspore.nn.Dense.html"",""mindspore.nn.Dense"")","=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/note/api_mapping/pytorch_diff/Dense.html"",""差异对比"")"
+,
+暂时不能转换的API,
+torch.nn.Module,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"
+torch.nn.Parameter,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"

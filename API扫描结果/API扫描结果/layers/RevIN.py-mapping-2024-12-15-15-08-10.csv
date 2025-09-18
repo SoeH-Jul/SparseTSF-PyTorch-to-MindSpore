@@ -1,0 +1,13 @@
+可以转换为MindSpore API的PyTorch/TensorFlow API,
+"=HYPERLINK(""https://pytorch.org/docs/1.8.1/generated/torch.ones.html"",""torch.ones"")",PyTorch 1.8.1 APIs,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/api_python/ops/mindspore.ops.ones.html"",""mindspore.ops.ones"")","=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/note/api_mapping/pytorch_diff/ones.html"",""差异对比"")"
+"=HYPERLINK(""https://pytorch.org/docs/1.8.1/generated/torch.zeros.html"",""torch.zeros"")",PyTorch 1.8.1 APIs,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/api_python/ops/mindspore.ops.zeros.html"",""mindspore.ops.zeros"")","=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/note/api_mapping/pytorch_diff/zeros.html"",""差异对比"")"
+"=HYPERLINK(""https://pytorch.org/docs/1.8.1/generated/torch.mean.html"",""torch.mean"")",PyTorch 1.8.1 APIs,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/api_python/ops/mindspore.ops.mean.html"",""mindspore.ops.mean"")",功能一致，参数名不同
+"=HYPERLINK(""https://pytorch.org/docs/1.8.1/generated/torch.sqrt.html"",""torch.sqrt"")",PyTorch 1.8.1 APIs,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/api_python/ops/mindspore.ops.sqrt.html"",""mindspore.ops.sqrt"")",功能一致，参数名不同
+"=HYPERLINK(""https://pytorch.org/docs/1.8.1/generated/torch.var.html#torch.var"",""torch.var"")",PyTorch 1.8.1 APIs,"=HYPERLINK(""https://mindspore.cn/docs/zh-CN/r2.1/api_python/ops/mindspore.ops.var.html"",""mindspore.ops.var"")","=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/note/api_mapping/pytorch_diff/var.html"",""差异对比（仅支持2.0及以上版本MindSpore）"")"
+,
+暂时不能转换的API,
+torch.nn.Module,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"
+torch.nn.Parameter,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"
+,
+可能是PyTorch/TensorFlow API的情况,
+torch.detach,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"

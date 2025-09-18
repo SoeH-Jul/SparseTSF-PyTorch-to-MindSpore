@@ -1,0 +1,18 @@
+可以转换为MindSpore API的PyTorch/TensorFlow API,
+"=HYPERLINK(""https://pytorch.org/docs/1.8.1/generated/torch.cat.html"",""torch.cat"")",PyTorch 1.8.1 APIs,"=HYPERLINK(""https://mindspore.cn/docs/zh-CN/r2.1/api_python/ops/mindspore.ops.cat.html"",""mindspore.ops.cat"")","=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/note/api_mapping/pytorch_diff/cat.html"",""功能一致，参数数据类型不一致（仅支持2.0及以上版本MindSpore）"")"
+"=HYPERLINK(""https://pytorch.org/docs/1.8.1/generated/torch.bitwise_and.html"",""torch.bitwise_and"")",PyTorch 1.8.1 APIs,"=HYPERLINK(""https://mindspore.cn/docs/zh-CN/r2.1/api_python/ops/mindspore.ops.bitwise_and.html"",""mindspore.ops.bitwise_and"")","=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/note/api_mapping/pytorch_api_mapping.html#api映射一致标准及例外场景"",""一致"")"
+"=HYPERLINK(""https://pytorch.org/docs/1.8.1/generated/torch.rand.html"",""torch.rand"")",PyTorch 1.8.1 APIs,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/api_python/ops/mindspore.ops.rand.html"",""mindspore.ops.rand"")","=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/note/api_mapping/pytorch_api_mapping.html#api映射一致标准及例外场景"",""一致（仅支持2.0及以上版本MindSpore）"")"
+"=HYPERLINK(""https://pytorch.org/docs/1.8.1/nn.functional.html#torch.nn.functional.interpolate"",""torch.nn.functional.interpolate"")",PyTorch 1.8.1 APIs,"=HYPERLINK(""https://mindspore.cn/docs/zh-CN/r2.1/api_python/ops/mindspore.ops.interpolate.html"",""mindspore.ops.interpolate"")","=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/note/api_mapping/pytorch_diff/interpolate.html"",""差异对比"")"
+,
+暂时不能转换的API,
+torch.fft.rfft,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"
+torch.cuda.FloatTensor,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"
+torch.complex,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"
+torch.fft.irfft,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"
+torch.bitwise_not,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"
+torch.from_numpy,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"
+torch.FloatTensor,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"
+,
+可能是PyTorch/TensorFlow API的情况,
+torch.cuda.uniform_,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"
+torch.uniform_,,,"=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/master/migration_guide/analysis_and_preparation.html#%E7%BC%BA%E5%A4%B1api%E5%A4%84%E7%90%86%E7%AD%96%E7%95%A5"",""缺失api处理策略"")"

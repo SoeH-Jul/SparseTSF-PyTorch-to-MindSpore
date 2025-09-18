@@ -1,0 +1,2 @@
+可以转换为MindSpore API的PyTorch/TensorFlow API,
+"=HYPERLINK(""https://pytorch.org/docs/1.8.1/data.html#torch.utils.data.DataLoader"",""torch.utils.data.DataLoader"")",PyTorch 1.8.1 APIs,"=HYPERLINK(""https://mindspore.cn/docs/zh-CN/r2.1/api_python/dataset/mindspore.dataset.GeneratorDataset.html#mindspore.dataset.GeneratorDataset"",""mindspore.dataset.GeneratorDataset"")","=HYPERLINK(""https://www.mindspore.cn/docs/zh-CN/r2.1/note/api_mapping/pytorch_diff/DataLoader.html"",""差异对比"")"

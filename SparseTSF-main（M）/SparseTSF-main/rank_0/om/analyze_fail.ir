@@ -1,0 +1,542 @@
+# ===============================================================================================
+# The following shows the last analyze fail log message.
+# ===============================================================================================
+
+----------------------------------------------------
+- Caught exception:
+----------------------------------------------------
+For 'Transpose', size of perm should equal to rank of x, but got 4 and 3!
+
+----------------------------------------------------
+- C++ Call Stack: (For framework developers)
+----------------------------------------------------
+mindspore\ops\infer\ops_func_impl\transpose.cc:62 mindspore::ops::TransposeFuncImpl::InferShape
+
+----------------------------------------------------
+- The Traceback of Net Construct Code:
+----------------------------------------------------
+# 0 In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:34, 12~55
+        x = ops.Transpose()(x - seq_mean, (0, 2, 3, 1))
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# ===============================================================================================
+# The following shows the IR when the function graphs evaluation fails to help locate the problem.
+# You can search the last ------------------------> to the node which is evaluated failure.
+# Refer to https://www.mindspore.cn/search?inputValue=analyze_fail.ir to get more instructions.
+# ===============================================================================================
+
+# IR entry: @models_SparseTSF_Model_construct_31
+# Total subgraphs: 0
+
+# Attrs:
+training: 1
+
+# Total params: 1
+# Params:
+%para1_x: <null>
+
+subgraph attr:
+training: 1
+subgraph instance: models_SparseTSF_Model_construct_31 : 000001FCE56E6FB0
+# In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:27~52, 4~16/    def construct(self, x):/
+subgraph @models_SparseTSF_Model_construct_31() {
+  %0(CNode_32) = resolve(NameSpace[Entry: 'models.SparseTSF.Model.construct'], models.SparseTSF.Model.construct)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+
+#------------------------> 0
+  %1(CNode_33) = %0(%para1_x)
+      : (<Tensor[Float32], (256, 720, 7)>) -> (<null>)
+      #scope: (Default)
+  Return(%1)
+      : (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:52, 8~16/        return y/
+}
+# Order:
+#   1: @models_SparseTSF_Model_construct_31:CNode_32{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> Entry: 'models.SparseTSF.Model.construct', [2]: ValueNode<Symbol> models.SparseTSF.Model.construct}
+#   2: @models_SparseTSF_Model_construct_31:CNode_33{[0]: CNode_32, [1]: param_x}
+#   3: @models_SparseTSF_Model_construct_31:CNode_34{[0]: ValueNode<Primitive> Return, [1]: CNode_33}
+
+
+subgraph attr:
+training: 1
+subgraph instance: models_SparseTSF_Model_construct_31 : 000001FCE56E7540
+# In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:27~52, 4~16/    def construct(self, x):/
+subgraph @models_SparseTSF_Model_construct_31(%para0_x) {
+  %0(CNode_35) = resolve(NameSpace[SymbolStr: 'Namespace:models.SparseTSF'], print)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:31, 8~13/        print(f"x shape: {x.shape}")  # 输出 x 的维度/
+  %1(CNode_36) = getattr(%para0_x, "shape")
+      : (<Tensor[Float32], (256, 720, 7)>, <String, NoShape>) -> (<Tuple[Int64*3], TupleShape(NoShape, NoShape, NoShape)>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:31, 14~35/        print(f"x shape: {x.shape}")  # 输出 x 的维度/
+  %2(CNode_37) = JoinedStr("x shape: ", %1)
+      : (<String, NoShape>, <Tuple[Int64*3], TupleShape(NoShape, NoShape, NoShape)>) -> (<String, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:31, 14~35/        print(f"x shape: {x.shape}")  # 输出 x 的维度/
+  %3(CNode_38) = %0(%2)
+      : (<String, NoShape>) -> (<Tensor[Int32], (1)>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:31, 8~36/        print(f"x shape: {x.shape}")  # 输出 x 的维度/
+  %4(CNode_39) = getattr(%para0_x, "shape")
+      : (<Tensor[Float32], (256, 720, 7)>, <String, NoShape>) -> (<Tuple[Int64*3], TupleShape(NoShape, NoShape, NoShape)>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:33, 14~35/        print(f"x shape: {x.shape}")  # 输出 x 的维度/
+  %5(CNode_40) = JoinedStr("x shape: ", %4)
+      : (<String, NoShape>, <Tuple[Int64*3], TupleShape(NoShape, NoShape, NoShape)>) -> (<String, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:33, 14~35/        print(f"x shape: {x.shape}")  # 输出 x 的维度/
+  %6(CNode_41) = %0(%5)
+      : (<String, NoShape>) -> (<Tensor[Int32], (1)>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:33, 8~36/        print(f"x shape: {x.shape}")  # 输出 x 的维度/
+  %7(CNode_42) = MakeTuple(%3, %6)
+      : (<Tensor[Int32], (1)>, <Tensor[Int32], (1)>) -> (<Tuple[Tensor[Int32]*2], TupleShape((1), (1))>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:27~52, 4~16/    def construct(self, x):/
+  %8(CNode_43) = StopGradient(%7)
+      : (<Tuple[Tensor[Int32]*2], TupleShape((1), (1))>) -> (<Tuple[Tensor[Int32]*2], TupleShape((1), (1))>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:27~52, 4~16/    def construct(self, x):/
+  %9(CNode_44) = resolve(NameSpace[Ast: 'Namespace:mindspore._extends.parse.trope'], add)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:50, 12~52/        y = ops.Transpose()(y, (0, 2, 1)) + seq_mean/
+  %10(CNode_45) = resolve(NameSpace[SymbolStr: 'Namespace:models.SparseTSF'], ops)
+      : (<External, NoShape>, <External, NoShape>) -> (<External, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~22/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %11(CNode_46) = getattr(%10, "Transpose")
+      : (<External, NoShape>, <String, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:50, 12~25/        y = ops.Transpose()(y, (0, 2, 1)) + seq_mean/
+  %12(CNode_47) = %11()
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:50, 12~27/        y = ops.Transpose()(y, (0, 2, 1)) + seq_mean/
+  %13(CNode_48) = getattr(%10, "Transpose")
+      : (<External, NoShape>, <String, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:47, 12~25/        y = ops.Transpose()(y, (0, 2, 1)).reshape((batch_size, self.enc_in, self.pred_len))/
+  %14(CNode_49) = %13()
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:47, 12~27/        y = ops.Transpose()(y, (0, 2, 1)).reshape((batch_size, self.enc_in, self.pred_len))/
+  %15(CNode_50) = resolve(NameSpace[ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>'], linear)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:44, 12~23/        y = self.linear(x)  # bc, w, m/
+  %16(CNode_51) = getattr(%10, "Transpose")
+      : (<External, NoShape>, <String, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:41, 12~25/        x = ops.Transpose()(x, (0, 2, 3, 1))/
+  %17(CNode_52) = %16()
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:41, 12~27/        x = ops.Transpose()(x, (0, 2, 3, 1))/
+  %18(CNode_53) = resolve(NameSpace[Ast: 'Namespace:mindspore._extends.parse.trope'], add)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 12~102/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %19(CNode_54) = resolve(NameSpace[ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>'], conv1d)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 12~23/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %20(CNode_55) = getattr(%10, "Transpose")
+      : (<External, NoShape>, <String, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:34, 12~25/        x = ops.Transpose()(x - seq_mean, (0, 2, 3, 1))/
+  %21(CNode_56) = %20()
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:34, 12~27/        x = ops.Transpose()(x - seq_mean, (0, 2, 3, 1))/
+  %22(CNode_57) = resolve(NameSpace[Ast: 'Namespace:mindspore._extends.parse.trope'], sub)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:34, 28~40/        x = ops.Transpose()(x - seq_mean, (0, 2, 3, 1))/
+  %23(CNode_58) = getattr(%10, "ReduceMean")
+      : (<External, NoShape>, <String, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~33/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %24(CNode_59) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], make_dict)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~49/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %25(CNode_60) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~49/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %26(CNode_61) = %25("keep_dims")
+      : (<String, NoShape>) -> (<Tuple[String], TupleShape(NoShape)>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~49/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %27(CNode_62) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~49/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %28(CNode_63) = %27(Bool(1))
+      : (<Bool, NoShape>) -> (<Tuple[Bool], TupleShape(NoShape)>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~49/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %29(CNode_64) = %24(%26, %28)
+      : (<Tuple[String], TupleShape(NoShape)>, <Tuple[Bool], TupleShape(NoShape)>) -> (<Dictionary[[keep_dims,],[Bool]], NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~49/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %30(CNode_65) = DoUnpackCall(%23, %29)
+      : (<Func, NoShape>, <Dictionary[[keep_dims,],[Bool]], NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~49/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %31(CNode_66) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~60/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %32(CNode_67) = %31(%para0_x)
+      : (<Tensor[Float32], (256, 720, 7)>) -> (<Tuple[Tensor[Float32]], TupleShape((256, 720, 7))>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~60/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %33(CNode_68) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], make_dict)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~60/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %34(CNode_69) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~60/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %35(CNode_70) = %34("axis")
+      : (<String, NoShape>) -> (<Tuple[String], TupleShape(NoShape)>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~60/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %36(CNode_71) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~60/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %37(CNode_72) = %36(I64(1))
+      : (<Int64, NoShape>) -> (<Tuple[Int64], TupleShape(NoShape)>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~60/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %38(CNode_73) = %33(%35, %37)
+      : (<Tuple[String], TupleShape(NoShape)>, <Tuple[Int64], TupleShape(NoShape)>) -> (<Dictionary[[axis,],[Int64]], NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~60/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %39(seq_mean) = DoUnpackCall(%30, %32, %38)
+      : (<Func, NoShape>, <Tuple[Tensor[Float32]], TupleShape((256, 720, 7))>, <Dictionary[[axis,],[Int64]], NoShape>) -> (<Tensor[Float32], (256, 1, 7)>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:32, 19~60/        seq_mean = ops.ReduceMean(keep_dims=True)(x, axis=1)/
+  %40(CNode_74) = %22(%para0_x, %39)
+      : (<Tensor[Float32], (256, 720, 7)>, <Tensor[Float32], (256, 1, 7)>) -> (<Tensor[Float32], (256, 720, 7)>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:34, 28~40/        x = ops.Transpose()(x - seq_mean, (0, 2, 3, 1))/
+  %41(CNode_75) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<External, NoShape>, <External, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:34, 42~54/        x = ops.Transpose()(x - seq_mean, (0, 2, 3, 1))/
+  %42(CNode_76) = %41(I64(0), I64(2), I64(3), I64(1))
+      : (<Int64, NoShape>, <Int64, NoShape>, <Int64, NoShape>, <Int64, NoShape>) -> (<Tuple[Int64*4], TupleShape(NoShape, NoShape, NoShape, NoShape)>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:34, 42~54/        x = ops.Transpose()(x - seq_mean, (0, 2, 3, 1))/
+
+#------------------------> 1
+  %43(x) = %21(%40, %42)
+      : (<Tensor[Float32], (256, 720, 7)>, <Tuple[Int64*4], TupleShape(NoShape, NoShape, NoShape, NoShape)>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:34, 12~55/        x = ops.Transpose()(x - seq_mean, (0, 2, 3, 1))/
+  %44(CNode_77) = getattr(%43, "reshape")
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 24~33/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %45(CNode_78) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 34~55/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %46(CNode_79) = resolve(NameSpace[Ast: 'Namespace:mindspore._extends.parse.trope'], neg)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 35~37/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %47(CNode_80) = %46(I64(1))
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 35~37/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %48(CNode_81) = resolve(NameSpace[ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>'], seq_len)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 42~54/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %49(CNode_82) = %45(%47, I64(1), %48)
+      : (<null>, <null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 34~55/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %50(CNode_83) = %44(%49)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 24~56/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %51(CNode_84) = %19(%50)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 12~57/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %52(CNode_85) = getattr(%51, "reshape")
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 12~65/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %53(CNode_86) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 66~97/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %54(CNode_87) = resolve(NameSpace[Ast: 'Namespace:mindspore._extends.parse.trope'], neg)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 67~69/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %55(CNode_88) = %54(I64(1))
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 67~69/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %56(CNode_89) = resolve(NameSpace[ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>'], enc_in)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 71~82/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %57(CNode_90) = resolve(NameSpace[ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>'], seq_len)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 84~96/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %58(CNode_91) = %53(%55, %56, %57)
+      : (<null>, <null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 66~97/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %59(CNode_92) = %52(%58)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 12~98/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %60(x) = %18(%59, %43)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:37, 12~102/        x = self.conv1d(x.reshape((-1, 1, self.seq_len))).reshape((-1, self.enc_in, self.seq_len)) + x/
+  %61(CNode_93) = getattr(%60, "reshape")
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:40, 12~21/        x = x.reshape((-1, self.seg_num_x, self.period_len))/
+  %62(CNode_94) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:40, 22~59/        x = x.reshape((-1, self.seg_num_x, self.period_len))/
+  %63(CNode_95) = resolve(NameSpace[Ast: 'Namespace:mindspore._extends.parse.trope'], neg)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:40, 23~25/        x = x.reshape((-1, self.seg_num_x, self.period_len))/
+  %64(CNode_96) = %63(I64(1))
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:40, 23~25/        x = x.reshape((-1, self.seg_num_x, self.period_len))/
+  %65(CNode_97) = resolve(NameSpace[ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>'], seg_num_x)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:40, 27~41/        x = x.reshape((-1, self.seg_num_x, self.period_len))/
+  %66(CNode_98) = resolve(NameSpace[ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>'], period_len)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:40, 43~58/        x = x.reshape((-1, self.seg_num_x, self.period_len))/
+  %67(CNode_99) = %62(%64, %65, %66)
+      : (<null>, <null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:40, 22~59/        x = x.reshape((-1, self.seg_num_x, self.period_len))/
+  %68(x) = %61(%67)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:40, 12~60/        x = x.reshape((-1, self.seg_num_x, self.period_len))/
+  %69(CNode_100) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:41, 31~43/        x = ops.Transpose()(x, (0, 2, 3, 1))/
+  %70(CNode_101) = %69(I64(0), I64(2), I64(3), I64(1))
+      : (<null>, <null>, <null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:41, 31~43/        x = ops.Transpose()(x, (0, 2, 3, 1))/
+  %71(x) = %17(%68, %70)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:41, 12~44/        x = ops.Transpose()(x, (0, 2, 3, 1))/
+  %72(y) = %15(%71)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:44, 12~26/        y = self.linear(x)  # bc, w, m/
+  %73(CNode_102) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:47, 31~40/        y = ops.Transpose()(y, (0, 2, 1)).reshape((batch_size, self.enc_in, self.pred_len))/
+  %74(CNode_103) = %73(I64(0), I64(2), I64(1))
+      : (<null>, <null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:47, 31~40/        y = ops.Transpose()(y, (0, 2, 1)).reshape((batch_size, self.enc_in, self.pred_len))/
+  %75(CNode_104) = %14(%72, %74)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:47, 12~41/        y = ops.Transpose()(y, (0, 2, 1)).reshape((batch_size, self.enc_in, self.pred_len))/
+  %76(CNode_105) = getattr(%75, "reshape")
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:47, 12~49/        y = ops.Transpose()(y, (0, 2, 1)).reshape((batch_size, self.enc_in, self.pred_len))/
+  %77(CNode_106) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:47, 50~90/        y = ops.Transpose()(y, (0, 2, 1)).reshape((batch_size, self.enc_in, self.pred_len))/
+  %78(CNode_107) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], getitem)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:28, 21~31/        batch_size = x.shape[0]/
+  %79(CNode_108) = getattr(%para0_x, "shape")
+      : (<Tensor[Float32], (256, 720, 7)>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:28, 21~28/        batch_size = x.shape[0]/
+  %80(batch_size) = %78(%79, I64(0))
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:28, 21~31/        batch_size = x.shape[0]/
+  %81(CNode_109) = resolve(NameSpace[ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>'], enc_in)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:47, 63~74/        y = ops.Transpose()(y, (0, 2, 1)).reshape((batch_size, self.enc_in, self.pred_len))/
+  %82(CNode_110) = resolve(NameSpace[ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>'], pred_len)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:47, 76~89/        y = ops.Transpose()(y, (0, 2, 1)).reshape((batch_size, self.enc_in, self.pred_len))/
+  %83(CNode_111) = %77(%80, %81, %82)
+      : (<null>, <null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:47, 50~90/        y = ops.Transpose()(y, (0, 2, 1)).reshape((batch_size, self.enc_in, self.pred_len))/
+  %84(y) = %76(%83)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:47, 12~91/        y = ops.Transpose()(y, (0, 2, 1)).reshape((batch_size, self.enc_in, self.pred_len))/
+  %85(CNode_112) = resolve(NameSpace[CommonOPS: 'Namespace:mindspore._extends.parse.trope'], MakeTuple)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:50, 31~40/        y = ops.Transpose()(y, (0, 2, 1)) + seq_mean/
+  %86(CNode_113) = %85(I64(0), I64(2), I64(1))
+      : (<null>, <null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:50, 31~40/        y = ops.Transpose()(y, (0, 2, 1)) + seq_mean/
+  %87(CNode_114) = %12(%84, %86)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:50, 12~41/        y = ops.Transpose()(y, (0, 2, 1)) + seq_mean/
+  %88(y) = %9(%87, %39)
+      : (<null>, <Tensor[Float32], (256, 1, 7)>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:50, 12~52/        y = ops.Transpose()(y, (0, 2, 1)) + seq_mean/
+  %89(CNode_115) = Depend(%88, %8) primitive_attrs: {side_effect_propagate: I64(1)} cnode_attrs: {topo_sort_rhs_first: Bool(1)}
+      : (<null>, <Tuple[Tensor[Int32]*2], TupleShape((1), (1))>) -> (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:50, 12~52/        y = ops.Transpose()(y, (0, 2, 1)) + seq_mean/
+  Return(%89)
+      : (<null>)
+      #scope: (Default)
+      # In file C:\Users\Lenovo\Downloads\SparseTSF-main\models\SparseTSF.py:52, 8~16/        return y/
+}
+# Order:
+#   1: @models_SparseTSF_Model_construct_31:CNode_107{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> getitem}
+#   2: @models_SparseTSF_Model_construct_31:CNode_108{[0]: ValueNode<Primitive> getattr, [1]: param_x, [2]: ValueNode<StringImm> shape}
+#   3: @models_SparseTSF_Model_construct_31:batch_size{[0]: CNode_107, [1]: CNode_108, [2]: ValueNode<Int64Imm> 0}
+#   4: @models_SparseTSF_Model_construct_31:CNode_35{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> SymbolStr: 'Namespace:models.SparseTSF', [2]: ValueNode<Symbol> print}
+#   5: @models_SparseTSF_Model_construct_31:CNode_36{[0]: ValueNode<Primitive> getattr, [1]: param_x, [2]: ValueNode<StringImm> shape}
+#   6: @models_SparseTSF_Model_construct_31:CNode_37{[0]: ValueNode<Primitive> JoinedStr, [1]: ValueNode<StringImm> x shape: , [2]: CNode_36}
+#   7: @models_SparseTSF_Model_construct_31:CNode_116{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#   9: @models_SparseTSF_Model_construct_31:CNode_38{[0]: CNode_35, [1]: CNode_37}
+#  10: @models_SparseTSF_Model_construct_31:CNode_45{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> SymbolStr: 'Namespace:models.SparseTSF', [2]: ValueNode<Symbol> ops}
+#  11: @models_SparseTSF_Model_construct_31:CNode_58{[0]: ValueNode<Primitive> getattr, [1]: CNode_45, [2]: ValueNode<StringImm> ReduceMean}
+#  12: @models_SparseTSF_Model_construct_31:CNode_60{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  13: @models_SparseTSF_Model_construct_31:CNode_61{[0]: CNode_60, [1]: ValueNode<StringImm> keep_dims}
+#  14: @models_SparseTSF_Model_construct_31:CNode_62{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  15: @models_SparseTSF_Model_construct_31:CNode_63{[0]: CNode_62, [1]: ValueNode<BoolImm> true}
+#  16: @models_SparseTSF_Model_construct_31:CNode_59{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> make_dict}
+#  17: @models_SparseTSF_Model_construct_31:CNode_64{[0]: CNode_59, [1]: CNode_61, [2]: CNode_63}
+#  18: @models_SparseTSF_Model_construct_31:CNode_65{[0]: ValueNode<Primitive> DoUnpackCall, [1]: CNode_58, [2]: CNode_64}
+#  19: @models_SparseTSF_Model_construct_31:CNode_66{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  20: @models_SparseTSF_Model_construct_31:CNode_67{[0]: CNode_66, [1]: param_x}
+#  21: @models_SparseTSF_Model_construct_31:CNode_69{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  22: @models_SparseTSF_Model_construct_31:CNode_70{[0]: CNode_69, [1]: ValueNode<StringImm> axis}
+#  23: @models_SparseTSF_Model_construct_31:CNode_71{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  24: @models_SparseTSF_Model_construct_31:CNode_72{[0]: CNode_71, [1]: ValueNode<Int64Imm> 1}
+#  25: @models_SparseTSF_Model_construct_31:CNode_68{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> make_dict}
+#  26: @models_SparseTSF_Model_construct_31:CNode_73{[0]: CNode_68, [1]: CNode_70, [2]: CNode_72}
+#  27: @models_SparseTSF_Model_construct_31:seq_mean{[0]: ValueNode<Primitive> DoUnpackCall, [1]: CNode_65, [2]: CNode_67, [3]: CNode_73}
+#  28: @models_SparseTSF_Model_construct_31:CNode_39{[0]: ValueNode<Primitive> getattr, [1]: param_x, [2]: ValueNode<StringImm> shape}
+#  29: @models_SparseTSF_Model_construct_31:CNode_40{[0]: ValueNode<Primitive> JoinedStr, [1]: ValueNode<StringImm> x shape: , [2]: CNode_39}
+#  30: @models_SparseTSF_Model_construct_31:CNode_117{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  32: @models_SparseTSF_Model_construct_31:CNode_41{[0]: CNode_35, [1]: CNode_40}
+#  33: @models_SparseTSF_Model_construct_31:CNode_55{[0]: ValueNode<Primitive> getattr, [1]: CNode_45, [2]: ValueNode<StringImm> Transpose}
+#  34: @models_SparseTSF_Model_construct_31:CNode_56{[0]: CNode_55}
+#  35: @models_SparseTSF_Model_construct_31:CNode_57{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> Ast: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> sub}
+#  36: @models_SparseTSF_Model_construct_31:CNode_74{[0]: CNode_57, [1]: param_x, [2]: seq_mean}
+#  37: @models_SparseTSF_Model_construct_31:CNode_75{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  38: @models_SparseTSF_Model_construct_31:CNode_76{[0]: CNode_75, [1]: ValueNode<Int64Imm> 0, [2]: ValueNode<Int64Imm> 2, [3]: ValueNode<Int64Imm> 3, [4]: ValueNode<Int64Imm> 1}
+#  39: @models_SparseTSF_Model_construct_31:CNode_118{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  41: @models_SparseTSF_Model_construct_31:x{[0]: CNode_56, [1]: CNode_74, [2]: CNode_76}
+#  42: @models_SparseTSF_Model_construct_31:CNode_54{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>', [2]: ValueNode<Symbol> conv1d}
+#  43: @models_SparseTSF_Model_construct_31:CNode_77{[0]: ValueNode<Primitive> getattr, [1]: x, [2]: ValueNode<StringImm> reshape}
+#  44: @models_SparseTSF_Model_construct_31:CNode_78{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  45: @models_SparseTSF_Model_construct_31:CNode_79{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> Ast: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> neg}
+#  46: @models_SparseTSF_Model_construct_31:CNode_80{[0]: CNode_79, [1]: ValueNode<Int64Imm> 1}
+#  47: @models_SparseTSF_Model_construct_31:CNode_81{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>', [2]: ValueNode<Symbol> seq_len}
+#  48: @models_SparseTSF_Model_construct_31:CNode_82{[0]: CNode_78, [1]: CNode_80, [2]: ValueNode<Int64Imm> 1, [3]: CNode_81}
+#  49: @models_SparseTSF_Model_construct_31:CNode_119{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  51: @models_SparseTSF_Model_construct_31:CNode_83{[0]: CNode_77, [1]: CNode_82}
+#  52: @models_SparseTSF_Model_construct_31:CNode_120{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  54: @models_SparseTSF_Model_construct_31:CNode_84{[0]: CNode_54, [1]: CNode_83}
+#  55: @models_SparseTSF_Model_construct_31:CNode_85{[0]: ValueNode<Primitive> getattr, [1]: CNode_84, [2]: ValueNode<StringImm> reshape}
+#  56: @models_SparseTSF_Model_construct_31:CNode_86{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  57: @models_SparseTSF_Model_construct_31:CNode_87{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> Ast: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> neg}
+#  58: @models_SparseTSF_Model_construct_31:CNode_88{[0]: CNode_87, [1]: ValueNode<Int64Imm> 1}
+#  59: @models_SparseTSF_Model_construct_31:CNode_89{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>', [2]: ValueNode<Symbol> enc_in}
+#  60: @models_SparseTSF_Model_construct_31:CNode_90{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>', [2]: ValueNode<Symbol> seq_len}
+#  61: @models_SparseTSF_Model_construct_31:CNode_91{[0]: CNode_86, [1]: CNode_88, [2]: CNode_89, [3]: CNode_90}
+#  62: @models_SparseTSF_Model_construct_31:CNode_121{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  64: @models_SparseTSF_Model_construct_31:CNode_92{[0]: CNode_85, [1]: CNode_91}
+#  65: @models_SparseTSF_Model_construct_31:CNode_53{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> Ast: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> add}
+#  66: @models_SparseTSF_Model_construct_31:x{[0]: CNode_53, [1]: CNode_92, [2]: x}
+#  67: @models_SparseTSF_Model_construct_31:CNode_93{[0]: ValueNode<Primitive> getattr, [1]: x, [2]: ValueNode<StringImm> reshape}
+#  68: @models_SparseTSF_Model_construct_31:CNode_94{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  69: @models_SparseTSF_Model_construct_31:CNode_95{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> Ast: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> neg}
+#  70: @models_SparseTSF_Model_construct_31:CNode_96{[0]: CNode_95, [1]: ValueNode<Int64Imm> 1}
+#  71: @models_SparseTSF_Model_construct_31:CNode_97{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>', [2]: ValueNode<Symbol> seg_num_x}
+#  72: @models_SparseTSF_Model_construct_31:CNode_98{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>', [2]: ValueNode<Symbol> period_len}
+#  73: @models_SparseTSF_Model_construct_31:CNode_99{[0]: CNode_94, [1]: CNode_96, [2]: CNode_97, [3]: CNode_98}
+#  74: @models_SparseTSF_Model_construct_31:CNode_122{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  76: @models_SparseTSF_Model_construct_31:x{[0]: CNode_93, [1]: CNode_99}
+#  77: @models_SparseTSF_Model_construct_31:CNode_51{[0]: ValueNode<Primitive> getattr, [1]: CNode_45, [2]: ValueNode<StringImm> Transpose}
+#  78: @models_SparseTSF_Model_construct_31:CNode_52{[0]: CNode_51}
+#  79: @models_SparseTSF_Model_construct_31:CNode_100{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  80: @models_SparseTSF_Model_construct_31:CNode_101{[0]: CNode_100, [1]: ValueNode<Int64Imm> 0, [2]: ValueNode<Int64Imm> 2, [3]: ValueNode<Int64Imm> 3, [4]: ValueNode<Int64Imm> 1}
+#  81: @models_SparseTSF_Model_construct_31:CNode_123{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  83: @models_SparseTSF_Model_construct_31:x{[0]: CNode_52, [1]: x, [2]: CNode_101}
+#  84: @models_SparseTSF_Model_construct_31:CNode_50{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>', [2]: ValueNode<Symbol> linear}
+#  85: @models_SparseTSF_Model_construct_31:CNode_124{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  87: @models_SparseTSF_Model_construct_31:y{[0]: CNode_50, [1]: x}
+#  88: @models_SparseTSF_Model_construct_31:CNode_48{[0]: ValueNode<Primitive> getattr, [1]: CNode_45, [2]: ValueNode<StringImm> Transpose}
+#  89: @models_SparseTSF_Model_construct_31:CNode_49{[0]: CNode_48}
+#  90: @models_SparseTSF_Model_construct_31:CNode_102{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  91: @models_SparseTSF_Model_construct_31:CNode_103{[0]: CNode_102, [1]: ValueNode<Int64Imm> 0, [2]: ValueNode<Int64Imm> 2, [3]: ValueNode<Int64Imm> 1}
+#  92: @models_SparseTSF_Model_construct_31:CNode_125{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  94: @models_SparseTSF_Model_construct_31:CNode_104{[0]: CNode_49, [1]: y, [2]: CNode_103}
+#  95: @models_SparseTSF_Model_construct_31:CNode_105{[0]: ValueNode<Primitive> getattr, [1]: CNode_104, [2]: ValueNode<StringImm> reshape}
+#  96: @models_SparseTSF_Model_construct_31:CNode_106{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+#  97: @models_SparseTSF_Model_construct_31:CNode_109{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>', [2]: ValueNode<Symbol> enc_in}
+#  98: @models_SparseTSF_Model_construct_31:CNode_110{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:models.SparseTSF..<Model::2186830931504>', [2]: ValueNode<Symbol> pred_len}
+#  99: @models_SparseTSF_Model_construct_31:CNode_111{[0]: CNode_106, [1]: batch_size, [2]: CNode_109, [3]: CNode_110}
+# 100: @models_SparseTSF_Model_construct_31:CNode_126{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+# 102: @models_SparseTSF_Model_construct_31:y{[0]: CNode_105, [1]: CNode_111}
+# 103: @models_SparseTSF_Model_construct_31:CNode_46{[0]: ValueNode<Primitive> getattr, [1]: CNode_45, [2]: ValueNode<StringImm> Transpose}
+# 104: @models_SparseTSF_Model_construct_31:CNode_47{[0]: CNode_46}
+# 105: @models_SparseTSF_Model_construct_31:CNode_112{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+# 106: @models_SparseTSF_Model_construct_31:CNode_113{[0]: CNode_112, [1]: ValueNode<Int64Imm> 0, [2]: ValueNode<Int64Imm> 2, [3]: ValueNode<Int64Imm> 1}
+# 107: @models_SparseTSF_Model_construct_31:CNode_127{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> CommonOPS: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> MakeTuple}
+# 109: @models_SparseTSF_Model_construct_31:CNode_114{[0]: CNode_47, [1]: y, [2]: CNode_113}
+# 110: @models_SparseTSF_Model_construct_31:CNode_44{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> Ast: 'Namespace:mindspore._extends.parse.trope', [2]: ValueNode<Symbol> add}
+# 111: @models_SparseTSF_Model_construct_31:y{[0]: CNode_44, [1]: CNode_114, [2]: seq_mean}
+# 113: @models_SparseTSF_Model_construct_31:CNode_34{[0]: ValueNode<Primitive> Return, [1]: CNode_115}
+
+
+# ===============================================================================================
+# The total of function graphs in evaluation stack: 2/4 (Ignored 2 internal frames).
+# ===============================================================================================
+
+
+# ===============================================================================================
+# The rest function graphs are the following:
+# ===============================================================================================
+No more function graphs.
+
